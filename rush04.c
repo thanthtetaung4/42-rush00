@@ -6,18 +6,18 @@
 /*   By: taung <taung@student.42singapore.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:06:41 by taung             #+#    #+#             */
-/*   Updated: 2024/03/03 16:55:07 by taung            ###   ########.fr       */
+/*   Updated: 2024/03/03 17:25:06 by taung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	rush04(int x, int y);
+void	rush(int x, int y);
 
-void	write_first_row(int *j_ptr, int *x_ptr);
-void	write_mid_rows(int *j_ptr, int *x_pt);
-void	write_last_row(int *j_ptr, int *x_pt);
-void	write(int i, int j, int x);
+void	write_first_row(int j, int x);
+void	write_mid_rows(int j, int x);
+void	write_last_row(int j, int x);
+void	write_lines(int i, int j, int x, int y);
 
 void	rush(int x, int y)
 {
@@ -31,7 +31,8 @@ void	rush(int x, int y)
 		j = 0;
 		while (j < x)
 		{
-			write (i, j, x);
+			write_lines (i, j, x, y);
+			j++;
 		}
 		ft_putchar('\n');
 		i++;
@@ -67,18 +68,18 @@ void	write_last_row(int j, int x)
 		ft_putchar('B');
 }
 
-void	write(int i, int j, int x)
+void	write_lines(int i, int j, int x, int y)
 {
 	if (i == 0)
 	{
 		write_first_row(j,x);
 	}
-	else if (i > 0 && i < y-1)
-	{
-		write_mid_rows(j,x);
-	}
-	else
+	else if (i == y - 1)
 	{	
 		write_last_row(j,x);
+	}
+	else
+	{
+		write_mid_rows(j,x);
 	}
 }
